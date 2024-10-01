@@ -1,4 +1,5 @@
 import sqlite3
+from tabulate import tabulate
 
 def query():
     """Query the database for the top 5 rows of the GroceryDB table"""
@@ -6,7 +7,11 @@ def query():
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM MatchResultsDB LIMIT 5")
     print("Top 5 rows of the MatchResultsDB table:")
-    print(cursor.fetchall())
+    rows = cursor.fetchall()
+    if rows:
+        # Get column names
+        col_names = [description[0] for description in cursor.description]
+        print(tabulate(rows, headers=col_names, tablefmt="grid"))
     conn.close()
     return "Success"
 
@@ -18,7 +23,11 @@ def delete(gameweek):
     conn.commit()
     cursor.execute("SELECT * FROM MatchResultsDB WHERE Round = ?", (gameweek,))
     print("Since we have deleted that gameweek it should be empty")
-    print(cursor.fetchall())
+    rows = cursor.fetchall()
+    if rows:
+        # Get column names
+        col_names = [description[0] for description in cursor.description]
+        print(tabulate(rows, headers=col_names, tablefmt="grid"))
     conn.close()
     return "Success"
 
@@ -37,7 +46,11 @@ def create(gameweek, date, team1, team2, score):
     conn.commit()
     cursor.execute("SELECT * FROM MatchResultsDB WHERE Round = ?", (gameweek,))
     print("We should either have a new gameweek or an extra row in existing gameweeks")
-    print(cursor.fetchall())
+    rows = cursor.fetchall()
+    if rows:
+        # Get column names
+        col_names = [description[0] for description in cursor.description]
+        print(tabulate(rows, headers=col_names, tablefmt="grid"))
     conn.close()
     return "Success"
 
