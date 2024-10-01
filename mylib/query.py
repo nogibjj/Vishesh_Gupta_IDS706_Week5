@@ -4,7 +4,7 @@ def query():
     """Query the database for the top 5 rows of the GroceryDB table"""
     conn = sqlite3.connect("MatchResultsDB.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM MatchResultsDB")
+    cursor.execute("SELECT * FROM MatchResultsDB LIMIT 5")
     print("Top 5 rows of the MatchResultsDB table:")
     print(cursor.fetchall())
     conn.close()
@@ -16,6 +16,9 @@ def delete(gameweek):
     cursor = conn.cursor()
     cursor.execute("DELETE FROM MatchResultsDB WHERE Round = ?", (gameweek,))
     conn.commit()
+    cursor.execute("SELECT * FROM MatchResultsDB WHERE Round = ?", (gameweek,))
+    print("Since we have deleted that gameweek it should be empty")
+    print(cursor.fetchall())
     conn.close()
     return "Success"
 
@@ -32,6 +35,9 @@ def create(gameweek, date, team1, team2, score):
         (gameweek, date, team1, team2, score),
     )
     conn.commit()
+    cursor.execute("SELECT * FROM MatchResultsDB WHERE Round = ?", (gameweek,))
+    print("We should either have a new gameweek or an extra row in existing gameweeks")
+    print(cursor.fetchall())
     conn.close()
     return "Success"
 

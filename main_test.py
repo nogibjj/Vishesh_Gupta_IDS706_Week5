@@ -1,5 +1,16 @@
 import subprocess
+import os
 
+def write_to_md(content):
+    with open("test_results.md", "a") as f:
+        f.write(content + "\n\n")
+
+def log_subprocess_result(result, description):
+    """Helper function to log subprocess result into a markdown file."""
+    write_to_md(f"### {description}")
+    write_to_md(f"**Command:** `{ ' '.join(result.args) }`")
+    write_to_md(f"**Return code:** {result.returncode}")
+    write_to_md(f"**STDOUT:**\n```plaintext\n{result.stdout}\n```")
 
 def test_extract():
     """tests extract()"""
@@ -35,6 +46,7 @@ def test_query():
     )
     assert result.returncode == 0
     assert "Top 5 rows of the MatchResultsDB table:" in result.stdout
+    log_subprocess_result(result, "Query MatchResultsDB")
 
 
 def test_create():
@@ -56,6 +68,7 @@ def test_create():
     )
     assert result.returncode == 0
     assert "Create Record" in result.stdout
+    log_subprocess_result(result, "Create Record")
 
 
 def test_delete():
@@ -68,9 +81,14 @@ def test_delete():
     )
     assert result.returncode == 0
     assert "Delete Record" in result.stdout
+    log_subprocess_result(result, "Delete Record")
 
 
 if __name__ == "__main__":
+    # Clear the existing .md file if it exists
+    if os.path.exists("test_results.md"):
+        os.remove("test_results.md")
+
     test_extract()
     test_load()
     test_query()
