@@ -2,8 +2,6 @@
 
 [![CI](https://github.com/nogibjj/Vishesh_Gupta_IDS706_Week5/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Vishesh_Gupta_IDS706_Week5/actions/workflows/cicd.yml)
 
-# IDS706 Week 5: CRUD Operations with SQL
-
 ## Project Overview
 
 This project demonstrates how to connect to a SQL database, perform CRUD (Create, Read, Update, Delete) operations, and write SQL queries within a Python script. The project includes:
