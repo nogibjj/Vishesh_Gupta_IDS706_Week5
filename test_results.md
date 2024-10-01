@@ -8,7 +8,19 @@
 ```plaintext
 Querying data...
 Top 5 rows of the MatchResultsDB table:
-[(1, 'Sat Aug 14 2010', 'Bolton Wanderers FC', '0-0', 'Fulham FC'), (1, 'Sat Aug 14 2010', 'Wigan Athletic FC', '0-4', 'Blackpool FC'), (1, 'Sat Aug 14 2010', 'Aston Villa FC', '3-0', 'West Ham United FC'), (1, 'Sat Aug 14 2010', 'Wolverhampton Wanderers FC', '2-1', 'Stoke City FC'), (1, 'Sat Aug 14 2010', 'Sunderland AFC', '2-2', 'Birmingham City FC')]
++---------+-----------------+----------------------------+----------+--------------------+
+|   Round | Date            | Team 1                     | Team 2   | FT                 |
++=========+=================+============================+==========+====================+
+|       1 | Sat Aug 14 2010 | Bolton Wanderers FC        | 0-0      | Fulham FC          |
++---------+-----------------+----------------------------+----------+--------------------+
+|       1 | Sat Aug 14 2010 | Wigan Athletic FC          | 0-4      | Blackpool FC       |
++---------+-----------------+----------------------------+----------+--------------------+
+|       1 | Sat Aug 14 2010 | Aston Villa FC             | 3-0      | West Ham United FC |
++---------+-----------------+----------------------------+----------+--------------------+
+|       1 | Sat Aug 14 2010 | Wolverhampton Wanderers FC | 2-1      | Stoke City FC      |
++---------+-----------------+----------------------------+----------+--------------------+
+|       1 | Sat Aug 14 2010 | Sunderland AFC             | 2-2      | Birmingham City FC |
++---------+-----------------+----------------------------+----------+--------------------+
 
 ```
 
@@ -22,7 +34,11 @@ Top 5 rows of the MatchResultsDB table:
 ```plaintext
 Create Record
 We should either have a new gameweek or an extra row in existing gameweeks
-[(40, '2024-06-01', 'Team A', 'Team B', '3-2')]
++---------+------------+----------+----------+------+
+|   Round | Date       | Team 1   | Team 2   | FT   |
++=========+============+==========+==========+======+
+|      40 | 2024-06-01 | Team A   | Team B   | 3-2  |
++---------+------------+----------+----------+------+
 
 ```
 
@@ -36,7 +52,6 @@ We should either have a new gameweek or an extra row in existing gameweeks
 ```plaintext
 Delete Record
 Since we have deleted that gameweek it should be empty
-[]
 
 ```
 
