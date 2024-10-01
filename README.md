@@ -13,6 +13,31 @@ This project demonstrates how to connect to a SQL database, perform CRUD (Create
 4. Implementation of a CI/CD pipeline to automate testing.
 5. A simple README file.
 
+```
+Vishesh_Gupta_IDS706_Week5/
+├── .devcontainer/
+│   ├── devcontainer.json
+│   └── Dockerfile
+├── .github/
+│   └── workflows/cicd.yml
+├── .gitignore
+├── data/
+│   └── match_results.csv
+├── Makefile
+├── python_main.py
+├── mylib/
+│   ├── __pycache__
+│   ├── __init__.py
+│   ├── extract.py
+│   ├── query.py
+│   └── transform_load.py
+├── test_results.md
+├── README.md
+├── requirements.txt
+├── MatchResultsDB.db
+└── main_test.py
+```
+
 ## Requirements
 
 ### 1. **Database Connection**
@@ -24,4 +49,15 @@ We demonstrate the following CRUD operations:
 - **Read:** Query and retrieve records from the table.
 - **Update:** Modify existing records within the table.
 - **Delete:** Remove records from the table.
+
+## Check format and test errors 
+1. Format code `make format`
+2. Lint code `make lint`
+3. Test code `make test`
+Additionally we have create a few more make commands that are:
+4. extract: run `make extract`
+5. transform and load: run `make transform_load`
+
+## References 
+https://github.com/nogibjj/sqlite-lab
 
