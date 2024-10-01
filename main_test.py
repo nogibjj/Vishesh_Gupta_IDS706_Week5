@@ -1,9 +1,11 @@
 import subprocess
 import os
 
+
 def write_to_md(content):
     with open("test_results.md", "a") as f:
         f.write(content + "\n\n")
+
 
 def log_subprocess_result(result, description):
     """Helper function to log subprocess result into a markdown file."""
@@ -11,6 +13,7 @@ def log_subprocess_result(result, description):
     write_to_md(f"**Command:** `{ ' '.join(result.args) }`")
     write_to_md(f"**Return code:** {result.returncode}")
     write_to_md(f"**STDOUT:**\n```plaintext\n{result.stdout}\n```")
+
 
 def test_extract():
     """tests extract()"""
