@@ -54,8 +54,9 @@ def main():
                 print("Update Record")
                 update(team1, new_round)
             else:
-                print("Insufficient arguments. Usage: python main.py update_round <team1> <new_round>")
-
+                print(
+                    "Insufficient arguments. Usage: python main.py update_round <team1> <new_round>"
+                )
 
         else:
             print(
