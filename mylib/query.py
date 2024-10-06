@@ -2,7 +2,7 @@ import sqlite3
 from tabulate import tabulate
 
 def query():
-    """Query the database for the top 5 rows of the GroceryDB table"""
+    """Query the database for the top 5 rows of the MatchResultsDB table"""
     conn = sqlite3.connect("MatchResultsDB.db")
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM MatchResultsDB LIMIT 5")
