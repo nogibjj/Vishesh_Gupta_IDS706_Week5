@@ -54,3 +54,21 @@ def create(gameweek, date, team1, team2, score):
     conn.close()
     return "Success"
 
+def update(team1, new_round):
+    conn = sqlite3.connect("MatchResultsDB.db")
+    cursor = conn.cursor()
+
+    cursor.execute("UPDATE MatchResultsDB SET Round = ? WHERE `Team 1` = ?",(new_round, team1))
+    conn.commit()
+    cursor.execute("SELECT * FROM MatchResultsDB WHERE `Team 1` = ?", (team1,))
+    print("Post Update")
+    rows = cursor.fetchall()
+    if rows:
+        # Get column names
+        col_names = [description[0] for description in cursor.description]
+        print(tabulate(rows, headers=col_names, tablefmt="grid"))
+
+    conn.close()
+    return "Success"
+
+

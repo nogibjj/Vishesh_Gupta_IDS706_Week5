@@ -1,6 +1,6 @@
 from mylib.extract import extract
 from mylib.transform_load import load
-from mylib.query import query, create, delete
+from mylib.query import query, create, delete, update
 import sys
 
 # Main script entry point
@@ -45,6 +45,17 @@ def main():
                 delete(gameweek)
             else:
                 print("Insufficient arguments. Usage: python main.py delete <gameweek>")
+
+        elif operation == "update":
+            # Ensure enough arguments are passed to update the round number for a specific Team 1
+            if len(sys.argv) == 4:
+                team1 = sys.argv[2]
+                new_round = int(sys.argv[3])
+                print("Update Record")
+                update(team1, new_round)
+            else:
+                print("Insufficient arguments. Usage: python main.py update_round <team1> <new_round>")
+
 
         else:
             print(

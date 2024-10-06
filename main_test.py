@@ -86,6 +86,16 @@ def test_delete():
     assert "Delete Record" in result.stdout
     log_subprocess_result(result, "Delete Record")
 
+def test_update():
+    result = subprocess.run(
+        ["python", "python_main.py", "update", "Wigan Athletic FC", "42"],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    assert result.returncode == 0
+    assert "Update Record" in result.stdout
+    log_subprocess_result(result, "Update Record will have all Wigan Athletic FC set to record 42")
 
 if __name__ == "__main__":
     # Clear the existing .md file if it exists
@@ -97,3 +107,4 @@ if __name__ == "__main__":
     test_query()
     test_create()
     test_delete()
+    test_update()
